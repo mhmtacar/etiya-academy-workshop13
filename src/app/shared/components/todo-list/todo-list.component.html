@@ -4,3 +4,16 @@
 <!-- Ekleme esnasında aynı todo mevcutsa (frontend kontrolü) eklemeyip inputu temizlesin.  -->
 <!-- Her ekleme sonrası input temizlensin. -->
 <!-- Bireysel -->
+
+<input placeholder="Enter your todo" [(ngModel)]="todoInput" />
+<button (click)="addTodo()">Add todo</button>
+
+@if(todoList.length > 0) {
+<ul>
+  @for(todo of todoList; track todo; let i = $index) {
+  <li>{{ i + 1 }}. {{ todo }} <button (click)="deleteTodo(i)">X</button></li>
+  }
+</ul>
+} @else{
+<p>Todo listesi boş.</p>
+}
