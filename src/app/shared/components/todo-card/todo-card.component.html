@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ toDoFromOtherPage.title }}</h5>
+    <p class="card-text">Status: {{ toDoFromOtherPage.completed ? 'Completed' : 'Pending' }}</p>
+    <div>
+      <button class="btn btn-danger" (click)="onRemove(toDoFromOtherPage.id)">Remove</button>
+      <button [routerLink]="['/todo-detail', toDoFromOtherPage.id]" class="btn btn-primary">Detail</button>
+    </div>
+  </div>
+</div>

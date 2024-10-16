@@ -1,19 +1,40 @@
-<p>todo-list works!</p>
-<!-- Kullanıcının todo girebileceği bir form, altında todoların listelenmesi, her todonun 1. 2. diye sıralanması -->
-<!-- Sonunda (X) ikonu ile listeden kaldırılabilmesi -->
-<!-- Ekleme esnasında aynı todo mevcutsa (frontend kontrolü) eklemeyip inputu temizlesin.  -->
-<!-- Her ekleme sonrası input temizlensin. -->
-<!-- Bireysel -->
+<br>
+<h4>To-Do Add</h4>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title</label>
+    <input id="title" name="title" [(ngModel)]="toDoItem.title" />
+  </div>
 
-<input placeholder="Enter your todo" [(ngModel)]="todoInput" />
-<button (click)="addTodo()">Add todo</button>
+  <div>
+    <label for="userId">User ID</label>
+    <input id="userId" name="userId" [(ngModel)]="toDoItem.userId" type="number" />
+  </div>
 
-@if(todoList.length > 0) {
-<ul>
-  @for(todo of todoList; track todo; let i = $index) {
-  <li>{{ i + 1 }}. {{ todo }} <button (click)="deleteTodo(i)">X</button></li>
+  <div>
+    <label for="id">Id</label>
+    <input id="id" name="id" [(ngModel)]="toDoItem.id" type="number" />
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+<br>
+<h4>To-Do List</h4>
+<div class="row">
+  @for(todo of toDoListFromBackend; track todo; let i = $index) {
+  <div class="col-2">
+    <app-todo-card
+      [toDoFromOtherPage]="todo"
+      (onRemoveClick)="remove($event)"
+    />
+  </div>
+
+  } @empty {
+  <p>Henüz bir todo eklemediniz.</p>
   }
-</ul>
-} @else{
-<p>Todo listesi boş.</p>
-}
+</div>
+
+<!-- Backend isteklerinin her birini çalıştıran kodları yazalım -->
+<!-- Ekleme işlemi post isteği -->
+<!-- Detay sayfası oluşturup orada da örnek bir id (1) detay isteği atsın -->
+<!-- Silme işlemi delete isteği atsın -->

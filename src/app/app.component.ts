@@ -1,8 +1,9 @@
+import { TodoListComponent } from './shared/components/todo-list/todo-list.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { TodoListComponent } from './shared/components/todo-list/todo-list.component';
+import { TodoCardComponent } from './shared/components/todo-card/todo-card.component';
 
 // SPA => Single Page Application
 @Component({
