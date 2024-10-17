@@ -1,10 +1,8 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem">
   <div class="card-body">
-    <h5 class="card-title">{{ toDoFromOtherPage.title }}</h5>
-    <p class="card-text">Status: {{ toDoFromOtherPage.completed ? 'Completed' : 'Pending' }}</p>
-    <div>
-      <button class="btn btn-danger" (click)="onRemove(toDoFromOtherPage.id)">Remove</button>
-      <button [routerLink]="['/todo-detail', toDoFromOtherPage.id]" class="btn btn-primary">Detail</button>
-    </div>
+    <h5 class="card-title">{{ toDoFromOtherPage.id }}</h5>
+    <p class="card-text">{{ toDoFromOtherPage.title }}</p>
+    <a class="btn btn-primary" (click)="onRemove()">Remove</a>
+    <a class="btn btn-secondary" (click) = "viewDetails(toDoFromOtherPage.id)" >Detail</a>
   </div>
 </div>

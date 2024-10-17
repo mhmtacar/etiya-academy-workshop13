@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GetToDoListResponse } from '../../models/getToDoListResponse';
 
+
 @Component({
   selector: 'app-todo-list',
   standalone: true,
@@ -15,7 +16,7 @@ export class TodoListComponent implements OnInit {
   todoList: string[] = [];
   newTodo: string = '';
   toDoListFromBackend: GetToDoListResponse[] = [];
-  toDoItem: GetToDoListResponse = {} as GetToDoListResponse;
+  toDoItem: GetToDoListResponse  = {} as GetToDoListResponse;
   // Dependency Injection
   constructor(private httpClient: HttpClient) {}
 
@@ -24,6 +25,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onSubmit() {
+    this.toDoItem.id = this.toDoListFromBackend.length + 1;
     this.httpClient
       .post<any>('https://jsonplaceholder.typicode.com/todos', this.toDoItem)
       .subscribe({

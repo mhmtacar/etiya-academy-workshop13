@@ -10,16 +10,18 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './todo-card.component.scss',
 })
 export class TodoCardComponent {
-  @Input() toDoFromOtherPage: GetToDoListResponse = {id:1,userId:1,title:'deneme',completed:false};
+  @Input() toDoFromOtherPage!: GetToDoListResponse;
   @Output() onRemoveClick: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private router: Router){}
 
-  onRemove(id:number) {
-    this.onRemoveClick.emit(id);
+  onRemove() {
+    this.onRemoveClick.emit(this.toDoFromOtherPage?.id);
   }
 
-  showDetails(id: number): void {
-    this.router.navigate([`/todo-detail/${id}`]);
+  viewDetails(id:number) {
+    if (this.toDoFromOtherPage) {
+      this.router.navigate(['/todo-detail', id]);
+    }
   }
 }
