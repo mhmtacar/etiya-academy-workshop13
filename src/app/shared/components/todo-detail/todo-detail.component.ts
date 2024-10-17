@@ -13,8 +13,8 @@ import { GetToDoItemResponse } from '../../models/getToDoItemResponse';
   styleUrl: './todo-detail.component.scss'
 })
 export class TodoDetailComponent implements OnInit {
-  todoId: number = 1; // Varsayılan bir değer
-  selectedToDoItem?: GetToDoItemResponse;  // Yanıtı tutmak için değişken
+  todoId!: number;
+  selectedToDoItem?: GetToDoItemResponse;
 
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) { }
